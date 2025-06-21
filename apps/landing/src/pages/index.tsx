@@ -1,16 +1,18 @@
-import React from 'react';
-import { Navbar } from '../components/Navbar';
-import { Hero } from '../components/Hero';
-import { Features } from '../components/Features';
-import { CTASection } from '../components/CTASection';
-import { UseCases } from '../components/UseCases';
-import { Pricing } from '../components/Pricing';
-import { Faq } from '../components/Faq';
-import { Footer } from '../components/Footer';
+"use client";
+
+import React from "react";
+import { Navbar } from "../components/Navbar";
+import { Hero } from "../components/Hero";
+import { Features } from "../components/Features";
+import { CTASection } from "../components/CTASection";
+import { UseCases } from "../components/UseCases";
+import { Pricing } from "../components/Pricing";
+import { Faq } from "../components/Faq";
+import { Footer } from "../components/Footer";
 
 export default function TestApp() {
   return (
-    <div>
+    <main className="bg-background text-foreground">
       <Navbar />
       <Hero />
       <Features />
@@ -19,6 +21,6 @@ export default function TestApp() {
       <Pricing />
       <Faq />
       <Footer />
-    </div>
+    </main>
   );
 }

@@ -33,35 +33,41 @@ export const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 backdrop-blur-lg transition-colors duration-300 border-b ${{
-          true: "bg-black/70 border-white/10",
-          false: "bg-transparent border-transparent",
-        }[scrolled.toString()]}`}
+        className={`fixed inset-x-0 top-0 z-50 backdrop-blur-md transition-colors duration-300 border-b ${
+          {
+            true: "bg-black/80 border-white/10",
+            false: "bg-transparent border-transparent",
+          }[scrolled.toString()]
+        }`}
       >
         <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-2 text-2xl font-bold text-white">
-            
-            <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}>
+          <Link
+            href="/"
+            className="flex items-center space-x-2 text-2xl font-bold text-white"
+          >
+            <motion.span
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.2 }}
+            >
               Node3x
             </motion.span>
           </Link>
 
           <nav className="hidden md:flex space-x-8">
-          {navLinks.map(({ label, href }) => (
-            <Link
-              key={href}
-              href={href}
-              scroll={false}
-              className="relative group text-sm font-medium text-white/80 hover:text-white transition-colors"
-            >
-              {label}
-              {/* Animated underline */}
-              <span
-                className="absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 w-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
-              />
-            </Link>
-          ))}
-        </nav>
+            {navLinks.map(({ label, href }) => (
+              <Link
+                key={href}
+                href={href}
+                scroll={false}
+                className="relative group text-sm font-medium text-white/80 hover:text-white transition-colors"
+              >
+                {label}
+                {/* Animated underline */}
+                <span className="absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-purple-400 to-indigo-400 w-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+              </Link>
+            ))}
+          </nav>
 
           <div className="hidden md:flex items-center space-x-4">
             <Link
@@ -83,7 +89,9 @@ export const Navbar = () => {
         </div>
       </header>
 
-      <AnimatePresence>{open && <MobileMenu onClose={close} />}</AnimatePresence>
+      <AnimatePresence>
+        {open && <MobileMenu onClose={close} />}
+      </AnimatePresence>
     </>
   );
 };
