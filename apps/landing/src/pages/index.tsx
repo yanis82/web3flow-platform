@@ -12,7 +12,7 @@ import { Footer } from "../components/Footer";
 
 export default function TestApp() {
   return (
-    <main className="bg-background text-foreground">
+    <main className="bg-background text-foreground overflow-x-hidden">
       <Navbar />
       <Hero />
       <Features />

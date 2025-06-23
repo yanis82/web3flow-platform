@@ -1,26 +1,48 @@
-// components/ui/switch.tsx
-import * as React from 'react';
-import { Switch as HeadlessSwitch } from '@headlessui/react';
+"use client";
 
-interface SwitchProps {
-  checked: boolean;
-  onCheckedChange: (checked: boolean) => void;
-}
+import { motion } from "framer-motion";
+import { useState } from "react";
 
-export function Switch({ checked, onCheckedChange }: SwitchProps) {
+type SwitchProps = {
+  enabled: boolean;
+  setEnabled: (value: boolean) => void;
+  labelLeft?: string;
+  labelRight?: string;
+};
+
+export function Switch({
+  enabled,
+  setEnabled,
+  labelLeft = "Monthly",
+  labelRight = "Yearly",
+}: SwitchProps) {
   return (
-    <HeadlessSwitch
-      checked={checked}
-      onChange={onCheckedChange}
-      className={`$ {
-        checked ? 'bg-blue-600' : 'bg-gray-300'
-      } relative inline-flex h-6 w-11 items-center rounded-full transition-colors`}
-    >
-      <span
-        className={`$ {
-          checked ? 'translate-x-6' : 'translate-x-1'
-        } inline-block h-4 w-4 transform rounded-full bg-white transition-transform`}
-      />
-    </HeadlessSwitch>
+    <div className="flex items-center gap-4 text-sm font-medium text-white">
+      <span className={enabled ? "opacity-60" : "font-semibold"}>{labelLeft}</span>
+      <button
+        onClick={() => setEnabled(!enabled)}
+        className="relative w-14 h-8 bg-white/20 border border-white/30 backdrop-blur-md rounded-full p-1 transition-all duration-300 focus:outline-none"
+      >
+        <motion.div
+          className="w-6 h-6 bg-white rounded-full shadow-lg"
+          layout
+          transition={{ type: "spring", stiffness: 500, damping: 30 }}
+          style={{ x: enabled ? "100%" : "0%" }}
+        />
+      </button>
+      <span className={enabled ? "font-semibold" : "opacity-60"}>{labelRight}</span>
+    </div>
+  );
+}
+export function PricingSwitch() {
+  const [isYearly, setIsYearly] = useState(false);
+
+  return (
+    <Switch
+      enabled={isYearly}
+      setEnabled={setIsYearly}
+      labelLeft="Monthly"
+      labelRight="Yearly"
+    />
   );
 }

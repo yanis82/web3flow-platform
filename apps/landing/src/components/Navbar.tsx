@@ -50,7 +50,7 @@ export const Navbar = () => {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
             >
-              Node3x
+              NodeƐx
             </motion.span>
           </Link>
 

@@ -9,6 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        backdropBlur: {
+      xl: '20px',
+    },
         // Palette Web3Flow professionnelle
         primary: {
           50: '#F5F3FF',
